@@ -21,7 +21,7 @@ jobs:
               - "./.storybook/**"
               - "./package.json"
               - "./package-lock.json"
-              - "!./src/**/*.interaction.stories.tsx"
-              - "!./src/**/*.test.ts"
+              - "!**/*.interaction.stories.tsx"
+              - "!**/*.test.ts"
       - name: Output
         run: echo "${{ steps.filter.outputs.only-needed }}"
