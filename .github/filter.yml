@@ -1,0 +1,27 @@
+name: Filter
+on:
+  push:
+
+jobs:
+  filter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          # PR内でファイルの変更が github-actionsと.interface-versionのみの変更の場合は、Chromaticによるスナップショットを取らないようにスキップする
+          # NOTE: commit 単位での変更ではない事に注意
+          filters: |
+            only-needed:
+              - "./src/**"
+              - "./public/**"
+              - "./.storybook/**"
+              - "./package.json"
+              - "./package-lock.json"
+              - "!./src/**/*.interaction.stories.tsx"
+              - "!./src/**/*.test.ts"
+      - name: Output
+        run: echo "${{ steps.filter.outputs.only-needed }}"
