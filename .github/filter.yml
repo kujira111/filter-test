@@ -1,6 +1,6 @@
 name: Filter
 on:
-  push:
+  pull_request:
 
 jobs:
   filter:
