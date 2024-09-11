@@ -16,11 +16,11 @@ jobs:
           # NOTE: commit 単位での変更ではない事に注意
           filters: |
             only-needed:
-              - "./src/**"
-              - "./public/**"
-              - "./.storybook/**"
-              - "./package.json"
-              - "./package-lock.json"
+              - "src/**"
+              - "public/**"
+              - ".storybook/**"
+              - "package.json"
+              - "package-lock.json"
               - "!**/*.interaction.stories.tsx"
               - "!**/*.test.ts"
       - name: Output
